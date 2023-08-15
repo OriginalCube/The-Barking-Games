@@ -10,12 +10,14 @@ function App() {
     <div className="flex">
       <BrowserRouter>
         <Navigation />
-        <Routes>
-          <Route index element={<Dashboard />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="rankings" element={<Rankings />} />
-          <Route path="tracker" element={<Tracker />} />
-        </Routes>
+        <div className="flex justify-center w-full">
+          <Routes>
+            <Route index element={<Dashboard />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="rankings" element={<Rankings />} />
+            <Route path="tracker" element={<Tracker />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );

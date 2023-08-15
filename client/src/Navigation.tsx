@@ -1,26 +1,72 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const linkVariants = {
+  initial: {
+    opacity: 0,
+    y: 25,
+  },
+  hover: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 const Navigation = () => {
   const imageAddress = "/assets/icons/";
   return (
-    <nav className="w-1/6 h-screen bg-slate-200">
-      <div className="w-full h-40 flex flex-col gap-4">
-        <div className="h-24 w-full flex items-center justify-center">
+    <nav className="w-20 h-screen bg-slate-200">
+      <div className="w-full h-40 flex flex-col gap-4 items-center justify-center">
+        <Link
+          to={"/"}
+          className="mt-16 h-24 w-full flex items-center justify-center cursor-pointer"
+        >
           <img
             src={imageAddress + "barkingGames.gif"}
             className="h-24 w-auto"
             alt=""
           />
-          <p className="text-2xl font-semibold">Barking Games</p>
-        </div>
-        <Link to={"/"} className="flex items-center justify-evenly">
-          <img src="" alt="" />
-          <p className="text-xl font-light">Dashboard</p>
         </Link>
-        <Link to={"/profile"} className="flex items-center justify-evenly">
-          <img src="" alt="" />
-          <p className="text-xl font-light">Profile</p>
+        <Link to={"/"} className="relative w-5/6">
+          <motion.div
+            initial="initial"
+            whileHover="hover"
+            className="relative w-full flex gap-4 items-center justify-evenly"
+          >
+            <img
+              src={imageAddress + "home.png"}
+              className="h-10 w-auto"
+              alt=""
+            />
+            <motion.p
+              variants={linkVariants}
+              className="absolute left-20 text-xl font-light"
+            >
+              Dashboard
+            </motion.p>
+          </motion.div>
+        </Link>
+        <Link to={"/"} className="relative w-5/6">
+          <motion.div
+            initial="initial"
+            whileHover="hover"
+            className="relative w-full flex gap-4 items-center justify-evenly"
+          >
+            <img
+              src={imageAddress + "profile.png"}
+              className="h-10 w-auto"
+              alt=""
+            />
+            <motion.p
+              variants={linkVariants}
+              className="absolute left-20 text-xl font-light"
+            >
+              Profile
+            </motion.p>
+          </motion.div>
         </Link>
       </div>
     </nav>
