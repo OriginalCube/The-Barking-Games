@@ -1,20 +1,24 @@
-import React from "react";
-import axios from "axios";
-import Auth from "./components/features/Auth";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import Rankings from "./pages/Rankings";
+import Tracker from "./pages/Tracker";
+import Navigation from "./Navigation";
 
 function App() {
-  const [con, setCon] = React.useState("");
-
-  const run = async () => {
-    const data = await Auth.checkCon();
-    setCon(data);
-  };
-
-  React.useEffect(() => {
-    run();
-  }, []);
-
-  return <div>{con}</div>;
+  return (
+    <div className="flex">
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route index element={<Dashboard />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="rankings" element={<Rankings />} />
+          <Route path="tracker" element={<Tracker />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
