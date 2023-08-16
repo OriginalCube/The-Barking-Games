@@ -3,7 +3,7 @@ import Daily from "../components/dashboard/Daily";
 import Activities from "../components/dashboard/Activities";
 import WeeklyProgress from "../components/dashboard/WeeklyProgress";
 import WeeklyDetails from "../components/dashboard/WeeklyDetails";
-import RecentActivity from "../components/dashboard/RecentActivity";
+import ActivityAim from "../components/dashboard/ActivityAim";
 
 const Dashboard = () => {
   return (
@@ -20,7 +20,7 @@ const Dashboard = () => {
           </div>
           <div className="w-1/2 h-auto items-center justify-evenly gap-4">
             <WeeklyDetails />
-            <RecentActivity />
+            <ActivityAim />
           </div>
         </div>
         <div className="flex w-1/5 items-center justify-center gap-4"></div>
