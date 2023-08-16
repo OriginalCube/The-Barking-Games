@@ -1,0 +1,46 @@
+{
+  "activity": [
+    {
+      "title": "Morning Walking",
+      "description": "Giving your dog a chance for your dog to explore its surroundings and interact with other dogs and people.",
+      "max": 30,
+      "min": 20,
+      "points": 20
+    },
+    {
+      "title": "Afternoon Walk",
+      "description": "Visiting a dog park allows your dog to socialize with other dogs and play off-leash in a secure environment.",
+      "max": 30,
+      "min": 20,
+      "points": 20
+    },
+    {
+      "title": "Evening Walk",
+      "description": "Visiting a dog park allows your dog to socialize with other dogs and play off-leash in a secure environment.",
+      "max": 20,
+      "min": 15,
+      "points": 15
+    },
+    {
+      "title": "Play Fetch",
+      "description": "It's a great way to exercise your dog's body and mind while engaging in interactive play.",
+      "max": 20,
+      "min": 15,
+      "points": 15
+    },
+    {
+      "title": "Dog Parks",
+      "description": "Visiting a dog park allows your dog to socialize with other dogs and play off-leash in a secure environment.",
+      "max": 45,
+      "min": 30,
+      "points": 45
+    },
+    {
+      "title": "Dog Parks",
+      "description": "Visiting a dog park allows your dog to socialize with other dogs and play off-leash in a secure environment.",
+      "max": 45,
+      "min": 30,
+      "points": 45
+    }
+  ]
+}
