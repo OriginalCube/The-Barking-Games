@@ -49,7 +49,7 @@ const Navigation = () => {
             </motion.p>
           </motion.div>
         </Link>
-        <Link to={"/"} className="relative w-5/6">
+        <Link to={"/profile"} className="relative w-5/6">
           <motion.div
             initial="initial"
             whileHover="hover"

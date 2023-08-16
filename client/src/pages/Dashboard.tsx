@@ -1,14 +1,9 @@
 import React from "react";
 import Daily from "../components/dashboard/Daily";
-import { activity } from "../Data.json";
-
-interface DailyProps {
-  title: string;
-  description: string;
-  max: number;
-  min: number;
-  points: number;
-}
+import Activities from "../components/dashboard/Activities";
+import WeeklyProgress from "../components/dashboard/WeeklyProgress";
+import WeeklyDetails from "../components/dashboard/WeeklyDetails";
+import RecentActivity from "../components/dashboard/RecentActivity";
 
 const Dashboard = () => {
   return (
@@ -18,22 +13,15 @@ const Dashboard = () => {
         <p className="w-1/2 text-xl font-light"> {Date().toString()}</p>
       </div>
       <div className="flex items-center justify-evenly gap-4">
-        <div className="flex w-4/5 items-center justify-center gap-4">
-          <div className="w-1/2 h-80 flex flex-col gap-2">
-            <p className="p-2 text-xl">Today's Random Activity</p>
-            <div className="w-auto h-72 flex flex-wrap gap-4 justify-around items-center overflow-y-scroll">
-              {activity.map((e: DailyProps, index: number) => (
-                <Daily
-                  key={index}
-                  title={e.title}
-                  max={e.max}
-                  min={e.min}
-                  points={e.points}
-                />
-              ))}
-            </div>
+        <div className="flex w-4/5 items-start justify-center gap-12">
+          <div className="w-1/2 h-auto flex flex-col gap-8">
+            <Activities />
+            <WeeklyProgress />
           </div>
-          <div className="w-1/2 h-80 bg-blue-100 rounded-md"></div>
+          <div className="w-1/2 h-auto items-center justify-evenly gap-4">
+            <WeeklyDetails />
+            <RecentActivity />
+          </div>
         </div>
         <div className="flex w-1/5 items-center justify-center gap-4"></div>
       </div>
