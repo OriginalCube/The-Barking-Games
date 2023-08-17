@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
     <div className="w-11/12 flex flex-col gap-8">
       <div className="w-4/6 h-auto flex items-end justify-evenly gap-4">
-        <p className="w-1/2 text-6xl font-medium mt-10">Activity Tracking</p>
+        <p className="w-1/2 text-6xl font-semibold mt-10">Activity Tracking</p>
         <p className="w-1/2 text-xl font-light"> {Date().toString()}</p>
       </div>
       <div className="flex items-center justify-evenly gap-4">

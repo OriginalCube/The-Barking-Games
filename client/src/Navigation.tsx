@@ -18,7 +18,7 @@ const linkVariants = {
 const Navigation = () => {
   const imageAddress = "/assets/icons/";
   return (
-    <nav className="w-20 h-screen bg-slate-200">
+    <nav className="w-20 h-screen bg-gradient-to-b from-yellow-300 vai-yellow-500 to-amber-400">
       <div className="w-full h-40 flex flex-col gap-4 items-center justify-center">
         <Link
           to={"/"}
