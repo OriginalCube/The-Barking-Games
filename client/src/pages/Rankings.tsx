@@ -1,7 +1,7 @@
 import React from "react";
 
 const Rankings = () => {
-  return <div>Rankings</div>;
+  return <div>Count : </div>;
 };
 
 export default Rankings;

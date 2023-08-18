@@ -17,6 +17,7 @@ const Activities = () => {
       <div className="w-auto h-72 flex flex-wrap gap-4 justify-around items-center overflow-y-scroll">
         {activity.map((e: DailyProps, index: number) => (
           <Daily
+            index={index}
             key={index}
             title={e.title}
             max={e.max}

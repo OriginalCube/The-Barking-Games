@@ -6,15 +6,16 @@ interface DailyProps {
   max: number;
   min: number;
   points: number;
+  index: number;
 }
 
-const Daily = ({ title, max, min, points }: DailyProps) => {
+const Daily = ({ index, title, max, min, points }: DailyProps) => {
   return (
     <div className="w-40 h-full flex flex-col justify-center gap-4 p-2">
       <p className="text-2xl font-semibold">{title}</p>
       <div className="w-full h-auto flex items-center gap-2">
         <img src="/assets/icons/time.png" className="h-5 w-auto" alt="" />
-        <p className="text-md">
+        <p className="text-md w-full text-left">
           {min} - {max} minutes
         </p>
       </div>

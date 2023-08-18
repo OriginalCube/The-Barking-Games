@@ -12,8 +12,8 @@ const LoginForm = () => {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    const success = await api.login(login);
-    if (success.status === 200) {
+    const success = await api.handleLogin(login);
+    if (success) {
       navigate("/");
     } else {
       setError("Invalid credentials");

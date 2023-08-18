@@ -16,9 +16,9 @@ const RegisterForm = () => {
       setError("Password do not match.");
       return;
     }
-    const onRegister = await User.register(register);
-    if (onRegister.status === 201) {
-      setError("Account created.");
+    const onRegister = await User.handleRegister(register);
+    if (onRegister) {
+      setError("Account created...");
     }
   };
 

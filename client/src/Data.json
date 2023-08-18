@@ -5,42 +5,42 @@
       "description": "Giving your dog a chance for your dog to explore its surroundings and interact with other dogs and people.",
       "max": 30,
       "min": 20,
-      "points": 20
+      "points": 25
     },
     {
       "title": "Afternoon Walk",
-      "description": "Visiting a dog park allows your dog to socialize with other dogs and play off-leash in a secure environment.",
+      "description": "Giving your dog a chance for your dog to explore its surroundings and interact with other dogs and people.",
       "max": 30,
       "min": 20,
-      "points": 20
+      "points": 25
     },
     {
       "title": "Evening Walk",
-      "description": "Visiting a dog park allows your dog to socialize with other dogs and play off-leash in a secure environment.",
-      "max": 20,
-      "min": 15,
-      "points": 15
+      "description": "Giving your dog a chance for your dog to explore its surroundings and interact with other dogs and people.",
+      "max": 30,
+      "min": 20,
+      "points": 25
     },
     {
       "title": "Play Fetch",
       "description": "It's a great way to exercise your dog's body and mind while engaging in interactive play.",
-      "max": 20,
-      "min": 15,
+      "max": 30,
+      "min": 20,
+      "points": 25
+    },
+    {
+      "title": "Dog Parks",
+      "description": "Visiting a dog park allows your dog to socialize with other dogs and play off-leash in a secure environment.",
+      "max": 45,
+      "min": 30,
+      "points": 40
+    },
+    {
+      "title": "Tug-of-War",
+      "description": "Engage in a controlled game of tug using a rope toy. It's a great way to satisfy your dog's natural desire to pull and chew, while also promoting bonding.",
+      "max": 30,
+      "min": 20,
       "points": 15
-    },
-    {
-      "title": "Dog Parks",
-      "description": "Visiting a dog park allows your dog to socialize with other dogs and play off-leash in a secure environment.",
-      "max": 45,
-      "min": 30,
-      "points": 45
-    },
-    {
-      "title": "Dog Parks",
-      "description": "Visiting a dog park allows your dog to socialize with other dogs and play off-leash in a secure environment.",
-      "max": 45,
-      "min": 30,
-      "points": 45
     }
   ]
 }

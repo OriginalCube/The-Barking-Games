@@ -27,19 +27,38 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { username, password } = req.body;
+  try {
+    const userExist = await UserModel.findOne({ username });
+    if (!userExist) {
+      res.json({ message: "Account does not exist." });
+    } else if (
+      userExist &&
+      (await bycrypt.compare(password, userExist.password))
+    ) {
+      res
+        .status(200)
+        .json({ message: "Logged in", token: genJWT(userExist._id) });
+    } else {
+      res.status(400).json({ message: "Invalid credentials." });
+    }
+  } catch (err) {
+    res.status(400).json({ message: "Error connecting..." });
+  }
+};
 
-  const userExist = await UserModel.findOne({ username });
-  if (!userExist) {
-    res.json({ message: "Account does not exist." });
-  } else if (
-    userExist &&
-    (await bycrypt.compare(password, userExist.password))
-  ) {
+const info = async (req, res) => {
+  const token = req.user;
+  console.log(token);
+  try {
+    const getUserInfo = await UserModel.findById(token);
+    if (!getUserInfo) {
+      res.status(400).json({ message: "User does not extist..." });
+    }
     res
       .status(200)
-      .json({ message: "Logged in", token: genJWT(userExist._id) });
-  } else {
-    res.status(400).json({ message: "Invalid credentials." });
+      .json({ username: getUserInfo.username, email: getUserInfo.email });
+  } catch (err) {
+    res.status(400).json({ message: "Error connecting..." });
   }
 };
 
@@ -47,4 +66,4 @@ const genJWT = (id) => {
   return jwt.sign({ id }, process.env.BARKING_SECRETS, { expiresIn: "30d" });
 };
 
-module.exports = { register, login };
+module.exports = { register, login, info };

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Page from "../components/profile/Page";
 import Register from "../components/profile/Register";
 
-const Profile = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+interface ProfileProps {
+  loggedIn: boolean;
+}
+
+const Profile = ({ loggedIn }: ProfileProps) => {
   return loggedIn ? <Page /> : <Register />;
 };
 
