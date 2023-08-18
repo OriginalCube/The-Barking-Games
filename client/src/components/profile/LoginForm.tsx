@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import api from "../api/User";
+import { useNavigate } from "react-router";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
   const [login, setLogin] = useState({
     username: "",
     password: "",
@@ -10,6 +13,11 @@ const LoginForm = () => {
   const handleLogin = async (e: any) => {
     e.preventDefault();
     const success = await api.login(login);
+    if (success.status === 200) {
+      navigate("/");
+    } else {
+      setError("Invalid credentials");
+    }
   };
 
   return (
@@ -41,6 +49,9 @@ const LoginForm = () => {
           onChange={(e) => setLogin({ ...login, password: e.target.value })}
         />
       </fieldset>
+      {error.length > 0 ? (
+        <p className="text-sm text-red-400 font-medium">{error}</p>
+      ) : null}
       <button
         className="border-2 font-medium hover:bg-white hover:text-indigo-600 border-indigo-600 rounded-md text-white bg-indigo-600 p-2 px-4"
         type="submit"
