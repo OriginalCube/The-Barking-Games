@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import api from "../api/Activity";
 
 interface DailyProps {
   title: string;
@@ -10,6 +11,9 @@ interface DailyProps {
 }
 
 const Daily = ({ index, title, max, min, points }: DailyProps) => {
+  const handleComplete = async () => {
+    const onComplete = api.handleComplete({ id: index, points, min });
+  };
   return (
     <div className="w-40 h-full flex flex-col justify-center gap-4 p-2">
       <p className="text-2xl font-semibold">{title}</p>
@@ -25,6 +29,7 @@ const Daily = ({ index, title, max, min, points }: DailyProps) => {
       </div>
       <motion.button
         whileHover={{ scale: 1.1 }}
+        onClick={handleComplete}
         className="bg-slate-800 py-2 text-white rounded-xl"
       >
         Complete

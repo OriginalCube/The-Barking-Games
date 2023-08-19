@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="flex">
-      <p className="text-4xl font-bold text-red-500 absolute">
+      <p className="text-4xl font-bold text-red-500 absolute hidden">
         {JSON.stringify(userData)}
       </p>
       <BrowserRouter>

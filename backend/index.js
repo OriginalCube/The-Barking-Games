@@ -13,6 +13,7 @@ const address = "/api/v1";
 connectDb();
 
 app.use(`${address}/user`, require("./routes/User"));
+app.use(`${address}/activity`, require("./routes/Activity"));
 
 const mainServer = app.listen(PORT, () =>
   console.log(`listening on port : ${PORT}`),
