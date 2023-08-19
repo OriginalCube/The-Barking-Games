@@ -14,6 +14,7 @@ interface RegisterProps {
   email: string;
 }
 
+//Check if credentials is true, and if true will return the token to react
 const handleLogin = async ({ username, password }: LoginProps) => {
   const onLogin = await axios.post(api_url + "/login", {
     username,
@@ -27,6 +28,7 @@ const handleLogin = async ({ username, password }: LoginProps) => {
   }
 };
 
+//Check if user already exist then creates account, will only return string if error exists
 const handleRegister = async ({ username, password, email }: RegisterProps) => {
   const onRegister = await axios.post(api_url + "/register", {
     username,
@@ -36,6 +38,7 @@ const handleRegister = async ({ username, password, email }: RegisterProps) => {
   return onRegister;
 };
 
+//Initial checker if user token is valid and if true store in redux
 const auth = async () => {
   if (!token) {
     return false;

@@ -9,6 +9,7 @@ interface CompleteProps {
   min: number;
 }
 
+//Saves progress of user
 const handleComplete = async ({ id, points, min }: CompleteProps) => {
   const onComplete = await axios.post(
     `${api_url}/create`,
@@ -17,9 +18,17 @@ const handleComplete = async ({ id, points, min }: CompleteProps) => {
       headers: { authorization: `Bearer ${token}` },
     },
   );
-  console.log(onComplete);
+  console.log(onComplete); // Must add to redux whenever an activity completes
 };
 
-const activity = { handleComplete };
+//Initial, collects activity done in the same day
+const handleActivity = async () => {
+  const onActvity = await axios.get(`${api_url}/collect`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  return onActvity;
+};
+
+const activity = { handleComplete, handleActivity };
 
 export default activity;

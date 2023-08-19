@@ -6,19 +6,27 @@ import Rankings from "./pages/Rankings";
 import Tracker from "./pages/Tracker";
 import Navigation from "./Navigation";
 import api from "./components/api/User";
+import apiActivity from "./components/api/Activity";
 import { login } from "./redux/reducers/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { addActivity } from "./redux/reducers/activitySlice";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const dispatch = useDispatch();
   const userData = useSelector((state: any) => state.user);
+  const userActivity = useSelector((state: any) => state.activity);
 
   const userAuth = async () => {
     const checkAuth = (await api.auth()) || null;
     if (checkAuth) {
       dispatch(login(checkAuth.data));
       setLoggedIn(true);
+      //Now checks if there's activity done in the same day
+      const checkActivity = (await apiActivity.handleActivity()) || null;
+      if (checkActivity) {
+        dispatch(addActivity(checkActivity.data));
+      }
     } else {
       setLoggedIn(false);
     }
@@ -32,6 +40,7 @@ function App() {
     <div className="flex">
       <p className="text-4xl font-bold text-red-500 absolute hidden">
         {JSON.stringify(userData)}
+        {JSON.stringify(userActivity)}
       </p>
       <BrowserRouter>
         <Navigation />
