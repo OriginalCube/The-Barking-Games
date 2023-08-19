@@ -13,8 +13,8 @@ const activitySlice = createSlice({
   name: "activity",
   initialState,
   reducers: {
-    addActivity: (state: any, action) => {
-      state.value.activity = [...state.value.activity, action.payload];
+    upadateActivity: (state: any, action) => {
+      state.value.activity = action.payload;
     },
 
     updateDate: (state: any) => {
@@ -24,6 +24,6 @@ const activitySlice = createSlice({
 });
 
 //Actions
-export const { addActivity, updateDate } = activitySlice.actions;
+export const { upadateActivity, updateDate } = activitySlice.actions;
 
 export default activitySlice;

@@ -9,7 +9,7 @@ import api from "./components/api/User";
 import apiActivity from "./components/api/Activity";
 import { login } from "./redux/reducers/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { addActivity } from "./redux/reducers/activitySlice";
+import { upadateActivity } from "./redux/reducers/activitySlice";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -25,7 +25,7 @@ function App() {
       //Now checks if there's activity done in the same day
       const checkActivity = (await apiActivity.handleActivity()) || null;
       if (checkActivity) {
-        dispatch(addActivity(checkActivity.data));
+        dispatch(upadateActivity(checkActivity.data));
       }
     } else {
       setLoggedIn(false);
@@ -37,7 +37,7 @@ function App() {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex bg-pallete-background">
       <p className="text-4xl font-bold text-red-500 absolute hidden">
         {JSON.stringify(userData)}
         {JSON.stringify(userActivity)}

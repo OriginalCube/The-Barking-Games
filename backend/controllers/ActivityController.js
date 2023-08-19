@@ -23,7 +23,6 @@ const create = async (req, res) => {
 const collect = async (req, res) => {
   try {
     const onCollect = await ActivityModel.find({ user: req.user._id });
-    console.log(onCollect);
     if (!onCollect) {
       res.status(400).json({ message: "No activities done." });
     } else {

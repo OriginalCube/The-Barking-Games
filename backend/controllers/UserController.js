@@ -48,7 +48,6 @@ const login = async (req, res) => {
 
 const info = async (req, res) => {
   const token = req.user;
-  console.log(token);
   try {
     const getUserInfo = await UserModel.findById(token);
     if (!getUserInfo) {

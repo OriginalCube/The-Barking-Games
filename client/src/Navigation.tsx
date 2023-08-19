@@ -18,7 +18,7 @@ const linkVariants = {
 const Navigation = () => {
   const imageAddress = "/assets/icons/";
   return (
-    <nav className="w-20 h-screen bg-gradient-to-b from-blue-200 via-blue-400 to-indigo-400">
+    <nav className="w-20 h-screen bg-pallete-primary">
       <div className="w-full h-40 flex flex-col gap-4 items-center justify-center">
         <Link
           to={"/"}
@@ -37,7 +37,7 @@ const Navigation = () => {
             className="relative w-full flex gap-4 items-center justify-evenly"
           >
             <img
-              src={imageAddress + "home.png"}
+              src={imageAddress + "toys.png"}
               className="h-10 w-auto"
               alt=""
             />
@@ -56,7 +56,7 @@ const Navigation = () => {
             className="relative w-full flex gap-4 items-center justify-evenly"
           >
             <img
-              src={imageAddress + "profile.png"}
+              src={imageAddress + "dog.png"}
               className="h-10 w-auto"
               alt=""
             />

@@ -26,26 +26,26 @@ const LoginForm = () => {
       className="w-5/6 h-5/6 flex flex-col gap-8 items-center justify-center "
     >
       <fieldset className="w-full h-auto">
-        <legend className="text-md font-semibold text-blue-600">
+        <legend className="text-md font-medium text-pallete-header">
           Username
         </legend>
         <input
           type="text"
           title="username"
-          className="outline-none border-2 border-indigo-400 p-2 
-                text-md rounded-md w-full focus:border-blue-400"
+          className="outline-none border-2 text-pallete-header border-pallete-primary p-2 
+                text-md rounded-md w-full focus:border-pallete-imp"
           onChange={(e) => setLogin({ ...login, username: e.target.value })}
         />
       </fieldset>
       <fieldset className="w-full h-auto">
-        <legend className="text-md font-semibold text-blue-600">
+        <legend className="text-md font-medium text-pallete-header">
           Password
         </legend>
         <input
           type="password"
           title="username"
-          className="outline-none border-2 border-indigo-400 p-2 
-                text-md rounded-md w-full focus:border-blue-400"
+          className="outline-none border-2 text-pallete-header border-pallete-primary p-2 
+                text-md rounded-md w-full focus:border-pallete-imp"
           onChange={(e) => setLogin({ ...login, password: e.target.value })}
         />
       </fieldset>
