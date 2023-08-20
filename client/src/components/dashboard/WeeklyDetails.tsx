@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
+interface DetailsProps {
+  time: number;
+  points: number;
+}
+
 const WeeklyDetails = () => {
   const { value } = useSelector((state: any) => state.activity);
-  const [points, setPoints] = useState(0);
+  const [point, setPoint] = useState(0);
   const [avg, setAvg] = useState(0);
 
   useEffect(() => {
-    console.log(value);
+    value.today.forEach((e: DetailsProps) => {
+      setAvg(avg + e.time);
+      setPoint(point + e.points);
+    });
   }, [value]);
 
   return (
@@ -15,10 +23,19 @@ const WeeklyDetails = () => {
       <p className="text-pallete-header text-6xl font-semibold">
         Weekly Details
       </p>
-      <div className="flex flex-col gap-2 text-pallete-imp">
-        <p className="text-2xl ">Daily Average :</p>
-        <p className="text-2xl ">Stats :</p>
-        <p className="text-2xl ">Points :</p>
+      <div className="flex flex-col gap-2 text-pallete-accent">
+        <p className="text-2xl ">
+          Daily Average : {avg / Math.floor(new Date().getDay() + 1)} min
+        </p>
+        <p className="text-2xl ">
+          Time :{" "}
+          <span className="text-pallete-imp">
+            {avg ? Math.floor(avg) : 0} min
+          </span>
+        </p>
+        <p className="text-2xl ">
+          Score: <span className="text-pallete-imp">{point} points</span>
+        </p>
       </div>
     </div>
   );
