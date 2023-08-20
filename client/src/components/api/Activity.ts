@@ -19,6 +19,7 @@ const handleComplete = async ({ id, points, min }: CompleteProps) => {
     },
   );
   //React with redux
+  return onComplete.data;
 };
 
 //Initial, collects activity done in the same day

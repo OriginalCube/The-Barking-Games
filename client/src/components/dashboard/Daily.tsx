@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import api from "../api/Activity";
-import { useSelector } from "react-redux";
+import { addActivity } from "../../redux/reducers/activitySlice";
+import { useSelector, useDispatch } from "react-redux";
 
 interface DailyProps {
   title: string;
@@ -13,13 +14,19 @@ interface DailyProps {
 
 const Daily = ({ index, title, max, min, points }: DailyProps) => {
   const [completed, isCompleted] = useState(false);
-  const today = useSelector((state: any) => state.activity);
+
+  const { value } = useSelector((state: any) => state.activity);
+  const dispatch = useDispatch();
+
   const handleComplete = async () => {
-    const onComplete = api.handleComplete({ id: index, points, min });
+    if (!completed) {
+      const onComplete = await api.handleComplete({ id: index, points, min });
+      dispatch(addActivity(onComplete));
+    }
   };
 
   useEffect(() => {
-    today.value.today.forEach(({ item_id, createdAt }: any) => {
+    value.today.forEach(({ item_id, createdAt }: any) => {
       if (
         new Date().getDate() === new Date(createdAt).getDate() &&
         item_id === index
@@ -27,7 +34,7 @@ const Daily = ({ index, title, max, min, points }: DailyProps) => {
         isCompleted(true);
       }
     });
-  }, [today]);
+  }, [value.today]);
 
   return (
     <div className="w-40 h-full flex flex-col justify-center gap-4 p-2">
