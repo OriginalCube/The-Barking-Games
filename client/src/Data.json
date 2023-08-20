@@ -5,6 +5,7 @@
       "description": "Giving your dog a chance for your dog to explore its surroundings and interact with other dogs and people.",
       "max": 30,
       "min": 20,
+      "image": "dog-walking.png",
       "points": 25
     },
     {
@@ -12,6 +13,7 @@
       "description": "Giving your dog a chance for your dog to explore its surroundings and interact with other dogs and people.",
       "max": 30,
       "min": 20,
+      "image": "dog-walking.png",
       "points": 25
     },
     {
@@ -19,6 +21,7 @@
       "description": "Giving your dog a chance for your dog to explore its surroundings and interact with other dogs and people.",
       "max": 30,
       "min": 20,
+      "image": "dog-walking.png",
       "points": 25
     },
     {
@@ -26,6 +29,7 @@
       "description": "It's a great way to exercise your dog's body and mind while engaging in interactive play.",
       "max": 30,
       "min": 20,
+      "image": "ball.png",
       "points": 25
     },
     {
@@ -33,6 +37,7 @@
       "description": "Visiting a dog park allows your dog to socialize with other dogs and play off-leash in a secure environment.",
       "max": 45,
       "min": 30,
+      "image": "park.png",
       "points": 40
     },
     {
@@ -40,6 +45,7 @@
       "description": "Engage in a controlled game of tug using a rope toy. It's a great way to satisfy your dog's natural desire to pull and chew, while also promoting bonding.",
       "max": 30,
       "min": 20,
+      "image": "tug-of-war.png",
       "points": 15
     }
   ]

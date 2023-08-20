@@ -1,13 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { activity } from "../../Data.json";
+import RecentActivities from "./RecentActivities";
 
 interface ActivityProps {
   item_id: number;
   points: number;
   time: number;
-  date: Date;
+  createdAt: Date;
 }
+
 const RecentActivity = () => {
   const RecentActivity = useSelector((state: any) => state.activity);
   return (
@@ -15,7 +16,24 @@ const RecentActivity = () => {
       <p className="text-xl font-semibold text-pallete-header">
         Recent Activities
       </p>
-      <div className="w-full h-48 flex flex-wrap gap-4 items-center justify-evenly overflow-y-auto"></div>
+      <div
+        className="w-full h-48 flex flex-col gap-4 items-center 
+      justify-evenly overflow-auto p-4"
+      >
+        {RecentActivity
+          ? RecentActivity.value.activity.map(
+              (e: ActivityProps, index: number) => (
+                <RecentActivities
+                  key={index}
+                  item_id={e.item_id}
+                  date={e.createdAt}
+                  points={e.points}
+                  time={e.time}
+                />
+              ),
+            )
+          : null}
+      </div>
     </div>
   );
 };

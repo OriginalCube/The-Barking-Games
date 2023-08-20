@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import api from "../api/Activity";
+import { useSelector } from "react-redux";
 
 interface DailyProps {
   title: string;
@@ -11,9 +12,23 @@ interface DailyProps {
 }
 
 const Daily = ({ index, title, max, min, points }: DailyProps) => {
+  const [completed, isCompleted] = useState(false);
+  const today = useSelector((state: any) => state.activity);
   const handleComplete = async () => {
     const onComplete = api.handleComplete({ id: index, points, min });
   };
+
+  useEffect(() => {
+    today.value.today.forEach(({ item_id, createdAt }: any) => {
+      if (
+        new Date().getDate() === new Date(createdAt).getDate() &&
+        item_id === index
+      ) {
+        isCompleted(true);
+      }
+    });
+  }, [today]);
+
   return (
     <div className="w-40 h-full flex flex-col justify-center gap-4 p-2">
       <p className="text-2xl font-semibold text-pallete-accent">{title}</p>
@@ -30,9 +45,13 @@ const Daily = ({ index, title, max, min, points }: DailyProps) => {
       <motion.button
         whileHover={{ scale: 1.1 }}
         onClick={handleComplete}
-        className="bg-pallete-accent py-2 rounded-xl text-pallete-background"
+        className={`${
+          !completed
+            ? "bg-pallete-accent text-pallete-background"
+            : "border-2 border-pallete-accent text-pallete-accent bg-pallete-background"
+        } py-2 rounded-xl`}
       >
-        Complete
+        {completed ? "completed" : "complete"}
       </motion.button>
     </div>
   );

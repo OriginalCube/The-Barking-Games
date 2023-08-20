@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 //Initial
 const initialState = {
   value: {
-    date: "",
+    date: Date(),
     activity: [],
+    today: [],
   },
 };
 
@@ -15,6 +16,12 @@ const activitySlice = createSlice({
   reducers: {
     upadateActivity: (state: any, action) => {
       state.value.activity = action.payload;
+      //Sorts activity done today.
+      action.payload.forEach((e: any) => {
+        if (new Date().getDate() === new Date(e.createdAt).getDate()) {
+          state.value.today = [...state.value.today, e];
+        }
+      });
     },
 
     updateDate: (state: any) => {

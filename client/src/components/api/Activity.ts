@@ -18,7 +18,7 @@ const handleComplete = async ({ id, points, min }: CompleteProps) => {
       headers: { authorization: `Bearer ${token}` },
     },
   );
-  console.log(onComplete); // Must add to redux whenever an activity completes
+  //React with redux
 };
 
 //Initial, collects activity done in the same day
