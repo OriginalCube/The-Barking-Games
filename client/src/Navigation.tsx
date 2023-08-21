@@ -18,15 +18,15 @@ const linkVariants = {
 const Navigation = () => {
   const imageAddress = "/assets/icons/";
   return (
-    <nav className="w-20 h-screen bg-pallete-primary">
-      <div className="w-full h-40 flex flex-col gap-4 items-center justify-center">
+    <nav className="fixed md:relative bottom-0 h-20 w-screen md:w-20 md:h-screen bg-pallete-primary z-50">
+      <div className="w-full h-20 md:h-40 flex flex-row gap-1 md:flex-col md:gap-4 items-center justify-center">
         <Link
           to={"/"}
           className="mt-16 h-24 w-full flex items-center justify-center cursor-pointer"
         >
           <img
             src={imageAddress + "barkingGames.gif"}
-            className="h-24 w-auto"
+            className="h-8 md:h-24 w-auto"
             alt=""
           />
         </Link>
@@ -38,12 +38,12 @@ const Navigation = () => {
           >
             <img
               src={imageAddress + "toys.png"}
-              className="h-10 w-auto"
+              className="h-4 md:h-10 w-auto"
               alt=""
             />
             <motion.p
               variants={linkVariants}
-              className="absolute left-20 text-xl font-light"
+              className="absolute left-20 text-xl font-normal text-pallete-imp"
             >
               Dashboard
             </motion.p>
@@ -57,12 +57,12 @@ const Navigation = () => {
           >
             <img
               src={imageAddress + "dog.png"}
-              className="h-10 w-auto"
+              className="h-4 md:h-10 w-auto"
               alt=""
             />
             <motion.p
               variants={linkVariants}
-              className="absolute left-20 text-xl font-light"
+              className="absolute left-20 text-xl font-normal text-pallete-imp"
             >
               Profile
             </motion.p>

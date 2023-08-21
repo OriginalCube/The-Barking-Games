@@ -11,8 +11,8 @@ const Dashboard = () => {
         <p className="text-pallete-header w-1/2 text-6xl font-semibold mt-10">
           Activity Tracking
         </p>
-        <p className="text-emerald-400 w-1/2 text-xl font-normal">
-          {Date().toString()}
+        <p className="text-emerald-400 w-1/2 text-xl font-normal text-pallete-header">
+          {new Date().toLocaleDateString()}
         </p>
       </div>
       <div className="flex items-center justify-evenly gap-4">

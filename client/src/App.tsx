@@ -37,11 +37,7 @@ function App() {
   }, []);
 
   return (
-    <div className="flex bg-pallete-background">
-      <p className="text-4xl font-bold text-red-500 absolute hidden">
-        {JSON.stringify(userData)}
-        {JSON.stringify(userActivity)}
-      </p>
+    <div className="flex flex-col-reverse md:flex-row bg-pallete-background">
       <BrowserRouter>
         <Navigation />
         <div className="flex justify-center w-full">

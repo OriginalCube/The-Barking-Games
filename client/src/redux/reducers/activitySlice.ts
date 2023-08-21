@@ -36,6 +36,7 @@ const activitySlice = createSlice({
     addActivity: (state: any, action) => {
       state.value.activity = [...state.value.activity, action.payload];
       state.value.today = [...state.value.today, action.payload];
+      state.value.week = [...state.value.week, action.payload];
     },
 
     updateDate: (state: any) => {

@@ -4,12 +4,12 @@ export default {
   theme: {
     colors: {
       pallete: {
-        primary: "#284551",
-        background: "#ffffff", //
-        header: "#284551",
-        accent: "#20cf75",
-        imp: "#db894f",
-        himp: "#db894f",
+        primary: "#699361", //284551
+        background: "#fbf0e3", // ffffff
+        header: "#699361",
+        accent: "#8bc360", //20cf75
+        imp: "#e9b96b", //e9b96b
+        himp: "#e9b96b",
       },
     },
     extend: {},
