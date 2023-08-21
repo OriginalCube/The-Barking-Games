@@ -5,7 +5,7 @@ export default {
     colors: {
       pallete: {
         primary: "#284551",
-        background: "#4b5563", // ffffff
+        background: "#ffffff", //
         header: "#284551",
         accent: "#20cf75",
         imp: "#db894f",

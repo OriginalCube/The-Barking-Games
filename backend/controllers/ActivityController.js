@@ -21,8 +21,23 @@ const create = async (req, res) => {
 };
 
 const collect = async (req, res) => {
+  const currentDate = new Date();
+  const firstDay = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    0,
+  );
+  const lastDay = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth() + 1,
+    0,
+  );
+
   try {
-    const onCollect = await ActivityModel.find({ user: req.user._id });
+    const onCollect = await ActivityModel.find({
+      user: req.user._id,
+      createdAt: { $gte: firstDay, $lte: lastDay },
+    });
     if (!onCollect) {
       res.status(400).json({ message: "No activities done." });
     } else {

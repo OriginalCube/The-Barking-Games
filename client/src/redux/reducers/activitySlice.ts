@@ -4,9 +4,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   value: {
     activity: [],
+    week: [],
     today: [],
   },
 };
+
+//To track week progress
+const currentDay = new Date();
+const firstDay = new Date();
+firstDay.setDate(currentDay.getDate() - 7);
 
 //Reducers
 const activitySlice = createSlice({
@@ -17,8 +23,12 @@ const activitySlice = createSlice({
       state.value.activity = action.payload;
       //Sorts activity done today.
       action.payload.forEach((e: any) => {
-        if (new Date().getDate() === new Date(e.createdAt).getDate()) {
+        const actionDay = new Date(e.createdAt);
+        if (new Date().getDate() === actionDay.getDate()) {
           state.value.today = [...state.value.today, e];
+        }
+        if (actionDay <= currentDay && actionDay >= firstDay) {
+          state.value.week = [...state.value.week, e];
         }
       });
     },

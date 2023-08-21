@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { activity } from "../../Data.json";
 import Daily from "./Daily";
 
