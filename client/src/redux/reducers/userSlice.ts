@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { value: { id: null, usename: "", email: "" } }; // Create initial state outside so we can reset if needed
+const initialState = {
+  value: { id: null, usename: "", email: "", birthday: "" },
+}; // Create initial state outside so we can reset if needed
 
 const userSlice = createSlice({
   name: "user", //Name that will be referenced

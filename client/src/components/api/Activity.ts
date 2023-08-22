@@ -30,6 +30,13 @@ const handleActivity = async () => {
   return onActvity;
 };
 
-const activity = { handleComplete, handleActivity };
+const handleActivityLogin = async (token: number) => {
+  const onActvity = await axios.get(`${api_url}/collect`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  return onActvity;
+};
+
+const activity = { handleComplete, handleActivity, handleActivityLogin };
 
 export default activity;

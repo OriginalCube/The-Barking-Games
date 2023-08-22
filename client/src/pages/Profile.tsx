@@ -4,10 +4,11 @@ import Register from "../components/profile/Register";
 
 interface ProfileProps {
   loggedIn: boolean;
+  setLoggedIn: (logged: boolean) => void;
 }
 
-const Profile = ({ loggedIn }: ProfileProps) => {
-  return loggedIn ? <Page /> : <Register />;
+const Profile = ({ loggedIn, setLoggedIn }: ProfileProps) => {
+  return loggedIn ? <Page /> : <Register setLoggedIn={setLoggedIn} />;
 };
 
 export default Profile;

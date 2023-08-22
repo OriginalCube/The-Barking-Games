@@ -8,14 +8,12 @@ import Navigation from "./Navigation";
 import api from "./components/api/User";
 import apiActivity from "./components/api/Activity";
 import { login } from "./redux/reducers/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { upadateActivity } from "./redux/reducers/activitySlice";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const dispatch = useDispatch();
-  const userData = useSelector((state: any) => state.user);
-  const userActivity = useSelector((state: any) => state.activity);
 
   const userAuth = async () => {
     const checkAuth = (await api.auth()) || null;
@@ -43,7 +41,12 @@ function App() {
         <div className="flex justify-center w-full">
           <Routes>
             <Route index element={<Dashboard />} />
-            <Route path="profile" element={<Profile loggedIn={loggedIn} />} />
+            <Route
+              path="profile"
+              element={
+                <Profile loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+              }
+            />
             <Route path="rankings" element={<Rankings />} />
             <Route path="tracker" element={<Tracker />} />
           </Routes>

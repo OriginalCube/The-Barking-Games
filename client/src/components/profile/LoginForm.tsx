@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../api/User";
 import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import userSlice from "../../redux/reducers/userSlice";
+import { upadateActivity } from "../../redux/reducers/activitySlice";
+import apiActivity from "../api/Activity";
 
-const LoginForm = () => {
+interface LoginProps {
+  setLoggedIn: (logged: boolean) => void;
+}
+
+const LoginForm = ({ setLoggedIn }: LoginProps) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { value } = useSelector((state: any) => state.user);
   const [error, setError] = useState("");
   const [login, setLogin] = useState({
     username: "",
@@ -13,12 +23,23 @@ const LoginForm = () => {
   const handleLogin = async (e: any) => {
     e.preventDefault();
     const success = await api.handleLogin(login);
-    if (success) {
-      navigate("/");
+    if (success.status === 200) {
+      localStorage.setItem("bg-token", success.data.token);
+      dispatch(userSlice.actions.login(success.data.profile));
+      setLoggedIn(true);
+      const checkActivity =
+        (await apiActivity.handleActivityLogin(success.data.token)) || null;
+      if (checkActivity) {
+        dispatch(upadateActivity(checkActivity.data));
+      }
     } else {
-      setError("Invalid credentials");
+      setError("Invalid Credentials.");
     }
   };
+
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
 
   return (
     <form
@@ -53,7 +74,9 @@ const LoginForm = () => {
         <p className="text-sm text-red-400 font-medium">{error}</p>
       ) : null}
       <button
-        className="border-2 font-medium hover:bg-white hover:text-indigo-600 border-indigo-600 rounded-md text-white bg-indigo-600 p-2 px-4"
+        className="border-2 font-semibold bg-pallete-background 
+        text-pallete-himp
+        rounded-md hover:text-pallete-background hover:bg-pallete-himp p-2 px-4"
         type="submit"
       >
         Submit

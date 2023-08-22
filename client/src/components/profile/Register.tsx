@@ -3,7 +3,11 @@ import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 import Info from "./Info";
 
-const Register = () => {
+interface RegisterProps {
+  setLoggedIn: (logged: boolean) => void;
+}
+
+const Register = ({ setLoggedIn }: RegisterProps) => {
   const [hasAccount, setHasAccount] = useState(true);
 
   return (
@@ -16,7 +20,11 @@ const Register = () => {
           <Info setHasAccount={setHasAccount} hasAccount={hasAccount} />
         </div>
         <div className="w-2/3 h-full flex items-center justify-center">
-          {hasAccount ? <LoginForm /> : <RegisterForm />}
+          {hasAccount ? (
+            <LoginForm setLoggedIn={setLoggedIn} />
+          ) : (
+            <RegisterForm />
+          )}
         </div>
       </div>
     </div>

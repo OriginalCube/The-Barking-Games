@@ -35,9 +35,14 @@ const login = async (req, res) => {
       userExist &&
       (await bycrypt.compare(password, userExist.password))
     ) {
-      res
-        .status(200)
-        .json({ message: "Logged in", token: genJWT(userExist._id) });
+      res.status(200).json({
+        message: "Logged in",
+        token: genJWT(userExist._id),
+        profile: {
+          username: userExist.username,
+          email: userExist.email,
+        },
+      });
     } else {
       res.status(400).json({ message: "Invalid credentials." });
     }

@@ -20,12 +20,7 @@ const handleLogin = async ({ username, password }: LoginProps) => {
     username,
     password,
   });
-  if (onLogin.status === 200) {
-    localStorage.setItem("bg-token", onLogin.data.token);
-    return true;
-  } else {
-    return false;
-  }
+  return onLogin;
 };
 
 //Check if user already exist then creates account, will only return string if error exists
