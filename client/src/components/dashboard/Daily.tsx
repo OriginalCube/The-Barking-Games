@@ -37,7 +37,7 @@ const Daily = ({ index, title, max, min, points }: DailyProps) => {
   }, [value.today]);
 
   return (
-    <div className="w-40 h-full flex flex-col justify-center gap-4 p-2">
+    <div className="w-32 md:w-40 h-full flex flex-col justify-center gap-4 p-2">
       <p className="text-2xl font-semibold text-pallete-accent">{title}</p>
       <div className="w-full h-auto flex items-center gap-2">
         <img src="/assets/icons/time.png" className="h-5 w-auto" alt="" />
