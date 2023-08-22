@@ -20,9 +20,9 @@ const UserDetails = ({ username, email }: UserProps) => {
         />
       </motion.div>
       <div className="flex flex-col gap-4">
-        <p className="text-8xl text-pallete-header">{username}</p>
-        <p className="text-2xl text-pallete-accent">{email}</p>
-        <p className="text-2xl text-pallete-accent">Birthday</p>
+        <p className="text-8xl text-pallete-accent">{username}</p>
+        <p className="text-2xl text-pallete-imp">{email}</p>
+        <p className="text-2xl text-pallete-imp">Birthday</p>
       </div>
     </div>
   );

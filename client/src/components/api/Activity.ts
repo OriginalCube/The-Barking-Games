@@ -37,6 +37,26 @@ const handleActivityLogin = async (token: number) => {
   return onActvity;
 };
 
-const activity = { handleComplete, handleActivity, handleActivityLogin };
+const handleDailyActivity = async (id: number) => {
+  const onDailyActivity = await axios.get(`${api_url}/add/${id}`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  return onDailyActivity;
+};
+
+const handleRetrieveDaily = async () => {
+  const onDailyActivity = await axios.get(`${api_url}/daily`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  return onDailyActivity;
+};
+
+const activity = {
+  handleComplete,
+  handleActivity,
+  handleActivityLogin,
+  handleDailyActivity,
+  handleRetrieveDaily,
+};
 
 export default activity;

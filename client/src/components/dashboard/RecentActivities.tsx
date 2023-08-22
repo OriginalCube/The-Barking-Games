@@ -13,7 +13,7 @@ const RecentActivities = ({ item_id, points, time, date }: ActivityProps) => {
     <div className="w-full flex items-center justify-start gap-8">
       <img
         src={`/assets/icons/${activity[item_id].image}`}
-        className="h-8 w-auto"
+        className="h-12 w-auto"
         alt=""
       />
       <div className="flex flex-col gap-1">

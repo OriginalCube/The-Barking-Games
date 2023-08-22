@@ -6,6 +6,7 @@ const initialState = {
     activity: [],
     week: [],
     today: [],
+    daily: [],
   },
 };
 
@@ -33,6 +34,10 @@ const activitySlice = createSlice({
       });
     },
 
+    addDaily: (state: any, action) => {
+      state.value.daily = action.payload;
+    },
+
     addActivity: (state: any, action) => {
       state.value.activity = [...state.value.activity, action.payload];
       state.value.today = [...state.value.today, action.payload];
@@ -46,7 +51,7 @@ const activitySlice = createSlice({
 });
 
 //Actions
-export const { upadateActivity, updateDate, addActivity } =
+export const { upadateActivity, updateDate, addActivity, addDaily } =
   activitySlice.actions;
 
 export default activitySlice;

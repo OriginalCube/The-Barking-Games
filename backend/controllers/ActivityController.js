@@ -1,4 +1,5 @@
 const ActivityModel = require("../models/ActivityModel");
+const DailyModel = require("../models/DailyModel");
 
 const create = async (req, res) => {
   const { id, points, time } = req.body;
@@ -48,4 +49,45 @@ const collect = async (req, res) => {
   }
 };
 
-module.exports = { create, collect };
+const add = async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  try {
+    //Find if user exist in collection
+    const userExist = await DailyModel.findOne({ user: req.user._id });
+    if (!userExist) {
+      const addActivity = await DailyModel.create({
+        user: req.user._id,
+        item_id: [id],
+      });
+      if (addActivity) {
+        res.status(201).json(addActivity);
+      }
+    } else {
+      const addActivity = await DailyModel.findOneAndUpdate(
+        { user: req.user._id },
+        { $addToSet: { item_id: id } },
+      );
+      if (addActivity) {
+        res.status(201).json(addActivity);
+      }
+    }
+  } catch (err) {
+    res.status(400).json({ message: "Error updating data." });
+  }
+};
+
+const daily = async (req, res) => {
+  try {
+    console.log("recieved");
+    const exist = await DailyModel.findOne({ user: req.user._id });
+    if (exist) {
+      console.log(exist);
+      res.status(201).json(exist);
+    } else {
+      res.status(200).json({ message: "Does not have any daily" });
+    }
+  } catch (err) {}
+};
+
+module.exports = { create, collect, add, daily };

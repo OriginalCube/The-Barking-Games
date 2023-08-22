@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import UserDetails from "./UserDetails";
 import AddPet from "./AddPet";
+import Schedule from "./Schedule";
 
 const Page = () => {
   const { value } = useSelector((state: any) => state.user);
@@ -9,6 +10,7 @@ const Page = () => {
   return (
     <div className="w-11/12 h-auto flex flex-col gap-4">
       <UserDetails username={value.username} email={value.email} />
+      <Schedule />
 
       {addPet ? <AddPet /> : null}
 

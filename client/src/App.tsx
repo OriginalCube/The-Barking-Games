@@ -9,7 +9,7 @@ import api from "./components/api/User";
 import apiActivity from "./components/api/Activity";
 import { login } from "./redux/reducers/userSlice";
 import { useDispatch } from "react-redux";
-import { upadateActivity } from "./redux/reducers/activitySlice";
+import { upadateActivity, addDaily } from "./redux/reducers/activitySlice";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -24,6 +24,11 @@ function App() {
       const checkActivity = (await apiActivity.handleActivity()) || null;
       if (checkActivity) {
         dispatch(upadateActivity(checkActivity.data));
+      }
+
+      const checkDaily = await apiActivity.handleRetrieveDaily();
+      if (checkDaily) {
+        dispatch(addDaily(checkDaily.data.item_id));
       }
     } else {
       setLoggedIn(false);
