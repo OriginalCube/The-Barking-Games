@@ -14,6 +14,7 @@ connectDb();
 
 app.use(`${address}/user`, require("./routes/User"));
 app.use(`${address}/activity`, require("./routes/Activity"));
+app.use(`${address}/pet`, require("./routes/Pet"));
 
 const mainServer = app.listen(PORT, () =>
   console.log(`listening on port : ${PORT}`),

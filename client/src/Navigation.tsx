@@ -18,10 +18,10 @@ const linkVariants = {
 const Navigation = () => {
   const imageAddress = "/assets/icons/";
   return (
-    <nav className="fixed md:relative bottom-0 h-20 w-screen md:w-20 md:h-screen bg-pallete-primary z-50">
+    <nav className="md:relative bottom-0 h-20 w-screen md:w-20 md:h-screen z-50">
       <div
-        className="w-full h-20 md:h-40 flex flex-row
-      gap-1 md:flex-col md:gap-4 items-center justify-evenly md:justify-center"
+        className="fixed md:w-20 h-20 md:h-screen flex flex-row bg-pallete-primary
+      gap-1 md:gap-4 items-center justify-center md:flex-col md:justify-start"
       >
         <Link
           to={"/"}

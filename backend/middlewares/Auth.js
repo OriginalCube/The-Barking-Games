@@ -17,7 +17,7 @@ const protect = async (req, res, next) => {
 
       next();
     } catch (err) {
-      res.status(401).json({ message: "User does is not logged in." });
+      res.status(401).json({ message: "User is not logged in." });
     }
   }
 
