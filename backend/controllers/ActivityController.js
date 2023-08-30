@@ -51,7 +51,6 @@ const collect = async (req, res) => {
 
 const add = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   try {
     //Find if user exist in collection
     const userExist = await DailyModel.findOne({ user: req.user._id });
@@ -69,7 +68,12 @@ const add = async (req, res) => {
         { $addToSet: { item_id: id } },
       );
       if (addActivity) {
-        res.status(201).json(addActivity);
+        const updatedActivity = await DailyModel.findOne({
+          user: req.user._id,
+        });
+        res.status(200).json(updatedActivity);
+      } else {
+        res.status(400).json({ message: "Error updating files." });
       }
     }
   } catch (err) {
@@ -77,12 +81,37 @@ const add = async (req, res) => {
   }
 };
 
+const remove = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const userExist = await DailyModel.findOne({ user: req.user._id });
+    if (!userExist) {
+      res.stats(400).json({
+        message: "You don't have an account or account does not exist!",
+      });
+    } else {
+      const removeActivity = await DailyModel.findOneAndUpdate(
+        { user: req.user._id },
+        { $pull: { item_id: id } },
+      );
+      if (removeActivity) {
+        const updatedActivity = await DailyModel.findOne({
+          user: req.user._id,
+        });
+        res.status(200).json(updatedActivity);
+      } else {
+        res.status(400).json({ message: "Error in resolving problem." });
+      }
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const daily = async (req, res) => {
   try {
-    console.log("recieved");
     const exist = await DailyModel.findOne({ user: req.user._id });
     if (exist) {
-      console.log(exist);
       res.status(201).json(exist);
     } else {
       res.status(200).json({ message: "Does not have any daily" });
@@ -90,4 +119,4 @@ const daily = async (req, res) => {
   } catch (err) {}
 };
 
-module.exports = { create, collect, add, daily };
+module.exports = { create, collect, add, daily, remove };

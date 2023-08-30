@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { updateDaily } from "../../redux/reducers/activitySlice";
 import api from "../api/Activity";
 
 interface ActivityProps {
@@ -7,6 +9,7 @@ interface ActivityProps {
   description: string;
   max: number;
   min: number;
+  item_id?: number;
   index: number;
   image: string;
   points: number;
@@ -21,17 +24,24 @@ const ScheduleActivity = ({
   image,
   points,
   index,
+  item_id,
   add,
 }: ActivityProps) => {
   const [desc, setDesc] = useState(false);
+  const dispatch = useDispatch();
 
   const handlDailyActivity = async () => {
     if (add) {
-      //removes clicked activity
-    } else {
       const onDailyActivity = await api.handleDailyActivity(index);
+      dispatch(updateDaily(onDailyActivity.data.item_id));
+    } else {
+      const onDailyActivity = await api.handleRemoveActivity(
+        item_id ? item_id : 0,
+      );
+      if (onDailyActivity.status === 200) {
+        dispatch(updateDaily(onDailyActivity.data.item_id));
+      }
     }
-    //redux add daily
   };
 
   return (
@@ -60,7 +70,7 @@ const ScheduleActivity = ({
           </div>
         </motion.div>
         <motion.div
-          whileHover={{ scale: 1.2, rotate: `${add ? "45deg" : "0"}` }}
+          whileHover={{ scale: 1.2, rotate: `${add ? "0" : "45deg"}` }}
           className="h-8 w-auto cursor-pointer"
           onClick={handlDailyActivity}
         >

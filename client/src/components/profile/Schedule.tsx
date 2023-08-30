@@ -10,6 +10,7 @@ interface ActivityProps {
   min: number;
   image: string;
   points: number;
+  item_id?: number;
 }
 
 const Schedule = () => {
@@ -18,10 +19,21 @@ const Schedule = () => {
 
   useEffect(() => {
     const dailyArr: ActivityProps[] = [];
-    value.daily.forEach((e: number) => {
-      const createDaily = activity[e];
-      dailyArr.push(createDaily);
-    });
+    console.log("changes");
+    if (value.daily) {
+      value.daily.forEach((e: number) => {
+        const createDaily = {
+          title: activity[e].title,
+          description: activity[e].description,
+          max: activity[e].max,
+          min: activity[e].min,
+          image: activity[e].image,
+          points: activity[e].points,
+          item_id: e,
+        };
+        dailyArr.push(createDaily);
+      });
+    }
     setDaily(dailyArr);
   }, [value.daily]);
 
@@ -36,12 +48,13 @@ const Schedule = () => {
                 key={index}
                 index={index}
                 title={e.title}
+                item_id={e.item_id}
                 description={e.description}
                 max={e.max}
                 min={e.min}
                 image={e.image}
                 points={e.points}
-                add={true}
+                add={false}
               />
             ))}
           </div>
@@ -53,8 +66,9 @@ const Schedule = () => {
               <ScheduleActivity
                 key={index}
                 index={index}
+                item_id={0}
                 title={e.title}
-                add={false}
+                add={true}
                 description={e.description}
                 max={e.max}
                 min={e.min}
