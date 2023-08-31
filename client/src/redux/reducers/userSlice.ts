@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: { id: null, usename: "", email: "", birthday: "" },
+  value: { id: null, usename: "", email: "", birthday: "", pet: [] },
 }; // Create initial state outside so we can reset if needed
 
 const userSlice = createSlice({
@@ -17,9 +17,13 @@ const userSlice = createSlice({
     logout: (state) => {
       state.value = initialState.value;
     },
+
+    updatePet: (state: any, action) => {
+      state.value.pet = [...action.payload];
+    },
   },
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, updatePet } = userSlice.actions;
 
 export default userSlice;

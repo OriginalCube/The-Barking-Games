@@ -39,7 +39,6 @@ const activitySlice = createSlice({
     },
 
     updateDaily: (state: any, action) => {
-      console.log(action.payload);
       state.value.daily = [...action.payload];
     },
 

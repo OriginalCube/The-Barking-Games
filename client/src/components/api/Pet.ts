@@ -20,8 +20,16 @@ const handleAddPet = async ({ name, birthdate, breed }: PetProps) => {
   return addPet;
 };
 
+const handleRetrievePet = async () => {
+  const retrievePet = await axios.get(`${api_url}/retrieve`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  return retrievePet;
+};
+
 const Pet = {
   handleAddPet,
+  handleRetrievePet,
 };
 
 export default Pet;

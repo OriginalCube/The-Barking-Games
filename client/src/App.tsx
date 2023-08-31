@@ -6,8 +6,9 @@ import Rankings from "./pages/Rankings";
 import Tracker from "./pages/Tracker";
 import Navigation from "./Navigation";
 import api from "./components/api/User";
+import apiPet from "./components/api/Pet";
 import apiActivity from "./components/api/Activity";
-import { login } from "./redux/reducers/userSlice";
+import { login, updatePet } from "./redux/reducers/userSlice";
 import { useDispatch } from "react-redux";
 import { upadateActivity, addDaily } from "./redux/reducers/activitySlice";
 
@@ -29,6 +30,11 @@ function App() {
       const checkDaily = await apiActivity.handleRetrieveDaily();
       if (checkDaily) {
         dispatch(addDaily(checkDaily.data.item_id));
+      }
+
+      const checkPet = await apiPet.handleRetrievePet();
+      if (checkPet) {
+        dispatch(updatePet(checkPet.data));
       }
     } else {
       setLoggedIn(false);

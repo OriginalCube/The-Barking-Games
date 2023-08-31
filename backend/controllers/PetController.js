@@ -9,7 +9,7 @@ const add = async (req, res) => {
   }
 
   const fileExist = await PetModel.findOne({
-    owner: req.user_id,
+    owner: req.user._id,
     name: name,
     breed: breed,
   });
@@ -23,7 +23,7 @@ const add = async (req, res) => {
       name: name,
       birthdate: birthdate,
       breed: breed,
-      owner: req.user_id,
+      owner: req.user._id,
     });
     if (createFile) {
       res.status(201).json(createFile);
@@ -33,4 +33,22 @@ const add = async (req, res) => {
   }
 };
 
-module.exports = { add };
+const retrieve = async (req, res) => {
+  try {
+    const userExist = await UserModel.findById(req.user._id);
+    if (!userExist) {
+      res.status(399).json({ message: "User does not exist!" });
+    }
+    const petData = await PetModel.find({ owner: req.user._id });
+    if (petData === null) {
+      //No pet retrieved
+      res.status(200).json({ pet: [], message: "No pet retrieved." });
+    } else {
+      res.status(200).json(petData);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { add, retrieve };
